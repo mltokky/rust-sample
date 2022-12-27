@@ -10,6 +10,35 @@ struct User {
     active: bool,
 }
 
+// derive注釈でDebugトレイトを追加
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+// Rectangle構造体上にメソッドを実装する
+impl Rectangle {
+    // メソッドの第1引数には自身のインスタンスを表す引数を定義する（＝レシーバーを持つ関数）
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+
+// 複数に分けてimplブロックを書くことが可能
+impl Rectangle {
+    // selfを引数に取らない関数 → 「関連関数」
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
 // タプル構造体
 struct Color(u32, u32, u32);
 
@@ -50,4 +79,32 @@ fn main() {
     // タプル構造体の生成
     let red = Color(255, 0, 0);
     println!("red color: {}, {}, {}", red.0, red.1, red.2);
+
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+    // Debugトレイトが実装された構造体の全フィールドを出力する
+    println!("rect1: {:?}", rect1);
+    println!("rect2: {:?}", rect2);
+    println!("rect3: {:?}", rect3);
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+    // Rectangleクラスの関連関数 `square()` を呼び出す
+    let square = Rectangle::square(22);
+    println!("square: {:?}", square);
 }
