@@ -1,4 +1,5 @@
 /*
+ * 構造体を使用して関係のあるデータを構造化する
  * https://doc.rust-jp.rs/book-ja/ch05-02-example-structs.html
  */
 

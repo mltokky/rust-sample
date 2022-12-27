@@ -1,3 +1,8 @@
+/*
+ * フィボナッチ数列のn番目を生成する
+ * https://doc.rust-jp.rs/book-ja/ch03-05-control-flow.html
+ */
+
 use std::io::{self, Write};
 
 fn main() {

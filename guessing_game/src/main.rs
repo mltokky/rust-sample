@@ -1,3 +1,9 @@
+/*
+ * 数当てゲームのプログラミング
+ * https://doc.rust-jp.rs/book-ja/ch02-00-guessing-game-tutorial.html
+ *
+ */
+
 use std::{cmp::Ordering, io};
 
 use rand::Rng;
