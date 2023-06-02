@@ -47,26 +47,33 @@ fn main() {
     durian.call();
 
     let coin = Coin::One;
-    let coin_number = get_coin_number(coin);
+    let coin_number = get_coin_number(Some(coin));
+    println!("coin is {}", coin_number);
+    let coin_number = get_coin_number(None);
     println!("coin is {}", coin_number);
 }
 
 // match式を使う → その値を返す
-fn get_coin_number(coin: Coin) -> u32 {
-    match coin {
-        Coin::One => {
-            // 複数行になる場合は{}で囲む
-            println!("min coin!!");
-            1
+fn get_coin_number(coin: Option<Coin>) -> u32 {
+    if let Some(val) = coin {
+        match val {
+            Coin::One => {
+                // 複数行になる場合は{}で囲む
+                println!("min coin!!");
+                1
+            }
+            Coin::Five => 5,
+            Coin::Ten => 10,
+            Coin::Fifty => 50,
+            Coin::OneHundred => 100,
+            Coin::FiveHundred => {
+                println!("max coin!!!");
+                500
+            }
         }
-        Coin::Five => 5,
-        Coin::Ten => 10,
-        Coin::Fifty => 50,
-        Coin::OneHundred => 100,
-        Coin::FiveHundred => {
-            println!("max coin!!!");
-            500
-        }
+    } else {
+        println!("coin is nothing!!!!");
+        0
     }
 }
 
