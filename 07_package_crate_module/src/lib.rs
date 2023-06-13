@@ -1,3 +1,8 @@
+/*
+ * 7. 肥大化していくプロジェクトをパッケージ、クレート、モジュールを利用して管理する
+ * https://doc.rust-jp.rs/book-ja/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
+ */
+
 mod back_of_house {
     pub struct Breakfast {
         pub toast: String,

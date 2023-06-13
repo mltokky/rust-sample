@@ -1,3 +1,8 @@
+/*
+ * 8.1. ベクタで値のリストを保持する
+ * https://doc.rust-jp.rs/book-ja/ch08-01-vectors.html
+ */
+
 fn main() {
     // 新しいベクタの作成 → 型はジェネリクスで指定する
     let mut v1: Vec<i32> = Vec::new();
