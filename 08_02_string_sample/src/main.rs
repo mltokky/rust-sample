@@ -5,12 +5,14 @@
 
 fn main() {
     let s = String::from("これは文字列");
+    println!("String::from(): {}\n", s);
 
     // 文字列スライス → Stringへ変換
     let data = "initial string data";
     let s = data.to_string();
+    println!("data.to_string(): {}\n", s);
 
-    println!("----- UTF-8 encode -----");
+    println!("----- UTF-8 encodeded characters -----");
     let hello = String::from("السلام عليكم");
     println!("{}", hello);
     let hello = String::from("Dobrý den");
@@ -33,40 +35,47 @@ fn main() {
     println!("{}", hello);
     let hello = String::from("Hola");
     println!("{}", hello);
+    println!();
 
     // Stringに新たに文字列を追加
     let mut s = String::from("foo");
     let s2 = "bar";
     s.push_str(s2);
-    println!("{}", s);
+    println!("push_str(): {}", s);
     // strのスライスを渡したので、所有権は奪っていない → 使用可能
     println!("s2 is {}", s2);
+    println!();
 
-    let s3 = String::from("Hello, ");
-    let s4 = String::from("Rust world!");
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("Rust world!");
     // ジェネリクスで定義された add() 関数が呼ばれている
-    let s5 = s3 + &s4;
-    println!("s5: {}", s5);
+    let s3 = s1 + &s2;
+    println!("s1 + s2: {}", s3);
+    println!();
 
     // 複雑な文字列の連結にはformat!マクロを使う　所有権も奪わない
-    let s6 = String::from("stone");
-    let s7 = String::from("sky");
-    let s8 = String::from("sea");
-    let s9 = format!("{}-{}-{}", s6, s7, s8);
-    println!("{}", s9);
+    let s1 = String::from("stone");
+    let s2 = String::from("sky");
+    let s3 = String::from("sea");
+    let s4 = format!("{}-{}-{}", s1, s2, s3);
+    println!("use format! macro: {}", s4);
+    println!();
 
-    let s10 = "日本語で文字列を打ちます";
-    // let s10_slice = &s10[0..4];  // これはエラー：マルチバイト文字の途中の位置（'本'のインデックスが3..6であり、その間までをスライスにしようとしたため）
-    // println!("s10 slice: {}", s10_slice);
+    let s = "日本語で文字列を打ちます";
+    // let s_slice = &s[0..4];  // これはエラー：マルチバイト文字の途中の位置（'本'のインデックスが3..6であり、その間までをスライスにしようとしたため）
+    // println!("s slice: {}", s_slice);
     // 正確に1文字ずつアクセスするには chars() を使用する
-    println!("s10: {}", s10);
-    println!("----- chars() -----");
-    for ch in s10.chars() {
-        println!("{}", ch);
+    println!("Japanese characters: {}", s);
+    print!("-> chars(): ");
+    for ch in s.chars() {
+        print!("{} ", ch);
     }
+    println!();
+
     // バイト単位で取得
-    println!("----- bytes() -----");
-    for b in s10.bytes() {
-        println!("{}", b);
+    print!("-> bytes(): ");
+    for b in s.bytes() {
+        print!("{} ", b);
     }
+    println!();
 }
